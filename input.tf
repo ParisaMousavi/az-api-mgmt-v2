@@ -36,6 +36,10 @@ variable "publisher_email" {
   type = string
 }
 
+variable "identity_ids" {
+  type = list(string)
+}
+
 variable "additional_tags" {
   default = {}
   type    = map(string)

@@ -13,7 +13,8 @@ resource "azurerm_api_management" "this" {
     }
   }
   identity {
-    type = "SystemAssigned"
+    type         = length(var.identity_ids) == 0 ? "SystemAssigned" : "UserAssigned"
+    identity_ids = var.identity_ids
   }
   tags = merge(
     var.additional_tags,

@@ -111,8 +111,3 @@ resource "azurerm_monitor_diagnostic_setting" "this_law" {
   }
 }
 
-resource "azurerm_api_management_policy" "this" {
-  count             = var.management_policy_content == null ? 0 : 1
-  api_management_id = azurerm_api_management.this.id
-  xml_content       = var.management_policy_content
-}

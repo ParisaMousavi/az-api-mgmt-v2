@@ -4,7 +4,6 @@ variable "name" {
 
 variable "resource_group_name" {
   type        = string
-  description = "Name of the resource group as exported by the az-resourcegroup module."
 }
 
 variable "location" {
@@ -60,14 +59,6 @@ variable "key_vault_id" {
 
 variable "secret_id" {
   type = string
-}
-
-
-
-variable "management_policy_content" {
-  type        = string
-  default     = null
-  description = "The content of the API Management Policy specification."
 }
 
 #-------------------------------------------------------

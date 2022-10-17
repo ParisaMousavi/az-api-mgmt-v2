@@ -22,10 +22,10 @@ variable "sku" {
 variable "capacity" {
   type    = number
   default = 1
-  validation {
-    condition     = var.sku == "Premium" && contains(["1", "2"], format("%d", var.capacity)) || var.sku == "Developer" && contains(["1"], format("%d", var.capacity))
-    error_message = "Based on the sku the the number of deployed units must my allowed integer number."
-  }
+  # validation {
+  #   condition     = var.sku == "Premium" && contains(["1", "2"], format("%d", var.capacity)) || var.sku == "Developer" && contains(["1"], format("%d", var.capacity))
+  #   error_message = "Based on the sku the the number of deployed units must my allowed integer number."
+  # }
 }
 
 variable "publisher_name" {

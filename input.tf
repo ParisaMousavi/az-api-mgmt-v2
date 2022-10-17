@@ -14,7 +14,7 @@ variable "sku" {
   type    = string
   default = "Basic"
   validation {
-    condition     = contains(["Basic", "Premium", "Developer"], var.account_tier)
+    condition     = contains(["Basic", "Premium", "Developer"], var.sku)
     error_message = "Only the Developer & Premium tier support the Private Endpoint for the Landing Zone."
   }
 }

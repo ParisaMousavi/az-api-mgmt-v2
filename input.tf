@@ -46,6 +46,7 @@ variable "private_dns_info" {
     zone_name           = string
     resource_group_name = string
   })
+  default = {}
 }
 
 variable "virtual_network_type" {
@@ -62,11 +63,13 @@ variable "subnet_id" {
 }
 
 variable "key_vault_id" {
-  type = string
+  type    = string
+  default = null
 }
 
 variable "secret_id" {
-  type = string
+  type    = string
+  default = null
 }
 
 #-------------------------------------------------------

@@ -52,7 +52,7 @@ variable "virtual_network_type" {
   type    = string
   default = "None"
   validation {
-    condition     = contains(["None", "External", "Internal"], var.account_tier)
+    condition     = contains(["None", "External", "Internal"], var.virtual_network_type)
     error_message = "Only one of these values None, External, Internal is allowed."
   }
 }

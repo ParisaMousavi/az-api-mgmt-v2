@@ -46,7 +46,10 @@ variable "private_dns_info" {
     zone_name           = string
     resource_group_name = string
   })
-  default = {}
+  default = {
+    resource_group_name = null
+    zone_name           = null
+  }
 }
 
 variable "virtual_network_type" {

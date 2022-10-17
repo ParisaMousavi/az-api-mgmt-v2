@@ -3,7 +3,7 @@ variable "name" {
 }
 
 variable "resource_group_name" {
-  type        = string
+  type = string
 }
 
 variable "location" {
@@ -12,9 +12,9 @@ variable "location" {
 
 variable "sku" {
   type    = string
-  default = "Developer"
+  default = "Basic"
   validation {
-    condition     = var.sku == "Premium" || var.sku == "Developer"
+    condition     = contains(["Basic", "Premium", "Developer"], var.account_tier)
     error_message = "Only the Developer & Premium tier support the Private Endpoint for the Landing Zone."
   }
 }
@@ -22,7 +22,6 @@ variable "sku" {
 variable "capacity" {
   type    = number
   default = 1
-
   validation {
     condition     = var.sku == "Premium" && contains(["1", "2"], format("%d", var.capacity)) || var.sku == "Developer" && contains(["1"], format("%d", var.capacity))
     error_message = "Based on the sku the the number of deployed units must my allowed integer number."
@@ -47,6 +46,15 @@ variable "private_dns_info" {
     zone_name           = string
     resource_group_name = string
   })
+}
+
+variable "virtual_network_type" {
+  type    = string
+  default = "None"
+  validation {
+    condition     = contains(["None", "External", "Internal"], var.account_tier)
+    error_message = "Only one of these values None, External, Internal is allowed."
+  }
 }
 
 variable "subnet_id" {
